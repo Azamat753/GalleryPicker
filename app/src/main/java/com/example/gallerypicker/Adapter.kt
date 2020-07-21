@@ -42,12 +42,10 @@ class GalleryAdapter(var list: MutableList<GalleryImage>, var selectedImages: Mu
 
     class GalleryViewHolder(view: View, var context: Context) : RecyclerView.ViewHolder(view) {
         fun onBind(item: GalleryImage) {
-            if (item.imagePath!=null){
-            itemView.image.loadImage(context, item.imagePath)
-                Log.e("ololo", "onBind: ${item.imagePath}")
-        }else{
-                Toast.makeText(context,"error",Toast.LENGTH_SHORT).show()
-            }
+
+            itemView.image.setImageURI(Uri.parse(item.imagePath))
+            Log.e("ololo", "onBind: ${item.imagePath}")
+
     }
 
     interface GalleryListener {
